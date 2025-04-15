@@ -21,35 +21,28 @@ app.get('/', (req, res) => {
 });
 
 // Handle form submission
-app.post('/submit', (req, res) => {
-    const { name, email, message } = req.body;
+app.post('/submit', async (req, res) => {
+    try {
+        const { name, email, message } = req.body;
 
-    // Twilio setup
-    const client = twilio(process.env.TWILIO_SID, process.env.TWILIO_AUTH_TOKEN);
+        // Twilio setup
+        const client = twilio(process.env.TWILIO_SID, process.env.TWILIO_AUTH_TOKEN);
 
-    const whatsappMessage = `New Message from XPLORE Landing Page:\nName: ${name}\nEmail: ${email}\nMessage: ${message}`;
+        const whatsappMessage = `New Message from XPLORE Landing Page:\nName: ${name}\nEmail: ${email}\nMessage: ${message}`;
 
-    console.log('Attempting to send WhatsApp message...');
-    console.log('From:', process.env.TWILIO_WHATSAPP_NUMBER);
-    console.log('To:', process.env.RECIPIENT_WHATSAPP_NUMBER);
+        // Send WhatsApp message using Twilio
+        await client.messages.create({
+            from: process.env.TWILIO_WHATSAPP_NUMBER,
+            to: process.env.RECIPIENT_WHATSAPP_NUMBER,
+            body: whatsappMessage,
+        });
 
-    // Send WhatsApp message using Twilio
-    client.messages.create({
-        from: process.env.TWILIO_WHATSAPP_NUMBER,
-        to: process.env.RECIPIENT_WHATSAPP_NUMBER,
-        body: whatsappMessage,
-    })
-    .then((message) => {
-        console.log('WhatsApp message sent successfully:', message.sid);
-        res.redirect('/');
-    })
-    .catch((error) => {
+        res.redirect('/?success=true');
+    } catch (error) {
         console.error('Error sending WhatsApp message:', error);
-        res.send('Error occurred. Message not sent.');
-    });
+        res.redirect('/?error=true');
+    }
 });
 
-// Start the server
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
-});
+// Export the Express API
+export default app;
