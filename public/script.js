@@ -301,4 +301,129 @@ const hero = document.querySelector('.hero');
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     hero.style.backgroundPositionY = -(scrolled * 0.5) + 'px';
+});
+
+// Form Submission Handling
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('.contact-form');
+    const urlParams = new URLSearchParams(window.location.search);
+    const error = urlParams.get('error');
+    const success = urlParams.get('success');
+
+    // Show success/error message
+    if (success === 'true') {
+        showMessage('Message sent successfully! We will get back to you soon.', 'success');
+    } else if (error === 'config') {
+        showMessage('Server configuration error. Please try again later.', 'error');
+    } else if (error === 'send') {
+        showMessage('Failed to send message. Please try again later.', 'error');
+    }
+
+    function showMessage(message, type) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `form-message ${type}`;
+        messageDiv.textContent = message;
+        
+        // Insert message before the form
+        form.parentNode.insertBefore(messageDiv, form);
+        
+        // Remove message after 5 seconds
+        setTimeout(() => {
+            messageDiv.remove();
+        }, 5000);
+    }
+});
+
+// Form submission handling
+const contactForm = document.querySelector('.contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(contactForm);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+            const response = await fetch('/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                showMessage('Message sent successfully!', 'success');
+                contactForm.reset();
+            } else {
+                showMessage('Error sending message. Please try again.', 'error');
+            }
+        } catch (error) {
+            showMessage('Error sending message. Please try again.', 'error');
+        }
+    });
+}
+
+// Show message function
+function showMessage(message, type) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `form-message ${type}`;
+    messageDiv.textContent = message;
+    
+    const container = document.querySelector('.contact-content');
+    container.insertBefore(messageDiv, container.firstChild);
+    
+    setTimeout(() => {
+        messageDiv.remove();
+    }, 5000);
+}
+
+// Intersection Observer for animations
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('reveal');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Observe all sections
+document.querySelectorAll('section').forEach(section => {
+    observer.observe(section);
+});
+
+// Handle window resize
+let resizeTimer;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+        // Adjust any responsive elements here
+        const hero = document.querySelector('.hero');
+        if (hero) {
+            hero.style.height = `${window.innerHeight}px`;
+        }
+    }, 250);
+});
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+    // Set initial hero height
+    const hero = document.querySelector('.hero');
+    if (hero) {
+        hero.style.height = `${window.innerHeight}px`;
+    }
+    
+    // Check for success/error messages in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('success')) {
+        showMessage('Message sent successfully!', 'success');
+    } else if (urlParams.has('error')) {
+        showMessage('Error sending message. Please try again.', 'error');
+    }
 }); 

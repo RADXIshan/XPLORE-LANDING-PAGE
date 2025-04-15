@@ -25,22 +25,42 @@ app.post('/submit', async (req, res) => {
     try {
         const { name, email, message } = req.body;
 
+        // Validate environment variables
+        if (!process.env.TWILIO_SID || !process.env.TWILIO_AUTH_TOKEN || 
+            !process.env.TWILIO_WHATSAPP_NUMBER || !process.env.RECIPIENT_WHATSAPP_NUMBER) {
+            console.error('Missing required environment variables');
+            return res.redirect('/?error=config');
+        }
+
         // Twilio setup
         const client = twilio(process.env.TWILIO_SID, process.env.TWILIO_AUTH_TOKEN);
 
         const whatsappMessage = `New Message from XPLORE Landing Page:\nName: ${name}\nEmail: ${email}\nMessage: ${message}`;
 
+        // Log the attempt
+        console.log('Attempting to send WhatsApp message with config:', {
+            from: process.env.TWILIO_WHATSAPP_NUMBER,
+            to: process.env.RECIPIENT_WHATSAPP_NUMBER,
+            messageLength: whatsappMessage.length
+        });
+
         // Send WhatsApp message using Twilio
-        await client.messages.create({
+        const result = await client.messages.create({
             from: process.env.TWILIO_WHATSAPP_NUMBER,
             to: process.env.RECIPIENT_WHATSAPP_NUMBER,
             body: whatsappMessage,
         });
 
+        console.log('Message sent successfully:', result.sid);
         res.redirect('/?success=true');
     } catch (error) {
-        console.error('Error sending WhatsApp message:', error);
-        res.redirect('/?error=true');
+        console.error('Detailed error:', {
+            message: error.message,
+            code: error.code,
+            status: error.status,
+            moreInfo: error.moreInfo
+        });
+        res.redirect('/?error=send');
     }
 });
 
