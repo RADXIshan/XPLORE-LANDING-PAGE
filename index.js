@@ -36,12 +36,12 @@ app.post('/submit', async (req, res) => {
 
     const mailOptions = {
         from: {
-            name: req.body.name,
-            address: req.body.email
+            name: "Ishan Roy",
+            address: "trickster10ishan@gmail.com"
         },
-        to: "trickster10ishan@gmail.com", // list of receivers
+        to: "ishanroy3118107@gmail.com", // list of receivers
         subject: "Sent from XPLORE website", // Subject line
-        text: req.body.message, // plain text body
+        text: `Name: ${req.body.name}\nEmail: ${req.body.email}\nMessage: ${req.body.message}`, // plain text body
     }
 
     const sendMail = async (transporter, mailOptions) => { 
