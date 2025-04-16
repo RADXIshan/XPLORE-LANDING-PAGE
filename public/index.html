@@ -149,6 +149,9 @@
     <section id="contact" class="contact">
         <div class="container">
             <h2>Get in Touch</h2>
+
+            <div id="form-message" class="form-message" style="display: none;"></div>
+
             <div class="contact-content">
                 <div class="contact-info">
                     <div class="info-item">
@@ -165,7 +168,7 @@
                         <a href="#"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
-                <form action="/submit" method="post" class="contact-form">
+                <form action="/submit" method="post" class="contact-form" id="contact-form">
                     <input type="text" name="name" placeholder="Your Name" required>
                     <input type="email" name="email" placeholder="Your Email" required>
                     <textarea name="message" placeholder="Your Message" required></textarea>
@@ -181,7 +184,6 @@
             <p>&copy; 2025 Xplore Coding Club. All rights reserved.</p>
         </div>
     </footer>
-
     <script src="script.js"></script>
 </body>
 </html> 

@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import nodemailer from 'nodemailer';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -21,7 +22,6 @@ app.get('/', (req, res) => {
 
 // Handle form submission
 app.post('/submit', async (req, res) => {
-    const nodemailer = require("nodemailer");
 
     const transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -29,8 +29,8 @@ app.post('/submit', async (req, res) => {
         port: 587,
         secure: false, // true for port 465, false for other ports
         auth: {
-            user: "process.env.EMAIL",
-            pass: "process.env.APP_PASSWORD",
+            user: process.env.EMAIL,
+            pass: process.env.APP_PASSWORD,
         },
     });
 
@@ -54,5 +54,11 @@ app.post('/submit', async (req, res) => {
     }
 
     sendMail(transporter, mailOptions);
-    res.send('Email sent successfully');
+    res.redirect('index.html#contact');
 });
+
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+});
+// Export the Express API
+export default app;
