@@ -3,7 +3,6 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import twilio from 'twilio';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -22,47 +21,38 @@ app.get('/', (req, res) => {
 
 // Handle form submission
 app.post('/submit', async (req, res) => {
-    try {
-        const { name, email, message } = req.body;
+    const nodemailer = require("nodemailer");
 
-        // Validate environment variables
-        if (!process.env.TWILIO_SID || !process.env.TWILIO_AUTH_TOKEN || 
-            !process.env.TWILIO_WHATSAPP_NUMBER || !process.env.RECIPIENT_WHATSAPP_NUMBER) {
-            console.error('Missing required environment variables');
-            return res.redirect('/?error=config');
-        }
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false, // true for port 465, false for other ports
+        auth: {
+            user: "process.env.EMAIL",
+            pass: "process.env.APP_PASSWORD",
+        },
+    });
 
-        // Twilio setup
-        const client = twilio(process.env.TWILIO_SID, process.env.TWILIO_AUTH_TOKEN);
-
-        const whatsappMessage = `New Message from XPLORE Landing Page:\nName: ${name}\nEmail: ${email}\nMessage: ${message}`;
-
-        // Log the attempt
-        console.log('Attempting to send WhatsApp message with config:', {
-            from: process.env.TWILIO_WHATSAPP_NUMBER,
-            to: process.env.RECIPIENT_WHATSAPP_NUMBER,
-            messageLength: whatsappMessage.length
-        });
-
-        // Send WhatsApp message using Twilio
-        const result = await client.messages.create({
-            from: process.env.TWILIO_WHATSAPP_NUMBER,
-            to: process.env.RECIPIENT_WHATSAPP_NUMBER,
-            body: whatsappMessage,
-        });
-
-        console.log('Message sent successfully:', result.sid);
-        res.redirect('/?success=true');
-    } catch (error) {
-        console.error('Detailed error:', {
-            message: error.message,
-            code: error.code,
-            status: error.status,
-            moreInfo: error.moreInfo
-        });
-        res.redirect('/?error=send');
+    const mailOptions = {
+        from: {
+            name: req.body.name,
+            address: req.body.email
+        },
+        to: "trickster10ishan@gmail.com", // list of receivers
+        subject: "Sent from XPLORE website", // Subject line
+        text: req.body.message, // plain text body
     }
-});
 
-// Export the Express API
-export default app;
+    const sendMail = async (transporter, mailOptions) => { 
+        try {
+            const info = await transporter.sendMail(mailOptions);
+            console.log("Message sent: %s", info.messageId);
+        } catch (error) {
+            console.error('Error sending email:', error);
+        }
+    }
+
+    sendMail(transporter, mailOptions);
+    res.send('Email sent successfully');
+});
