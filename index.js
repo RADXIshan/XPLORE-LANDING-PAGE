@@ -44,6 +44,16 @@ app.post('/submit', async (req, res) => {
         text: `Name: ${req.body.name}\nEmail: ${req.body.email}\nMessage: ${req.body.message}`, // plain text body
     }
 
+    const sender ={
+        from: {
+            name: "XPLORE XIM",
+            address: "xplore@xim.edu.in"
+        },
+        to: req.body.email, // list of receivers
+        subject: "XPLORE feedback", // Subject line
+        text: `Thank you for your feedback. We will get back to you soon.`, // plain text body
+    }
+
     const sendMail = async (transporter, mailOptions) => { 
         try {
             const info = await transporter.sendMail(mailOptions);
@@ -54,6 +64,7 @@ app.post('/submit', async (req, res) => {
     }
 
     sendMail(transporter, mailOptions);
+    sendMail(transporter, sender);
     res.redirect('index.html#contact');
 });
 
