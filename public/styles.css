@@ -30,16 +30,14 @@ body {
 /* Terminal-like Typing Effect */
 .hero-content h1 {
     font-family: 'Jersey 15', sans-serif;
-    font-size: 6rem;
-    margin-bottom: 1rem;
+    font-size: 6.5rem;
+    margin-bottom: 0.1rem;
     color: var(--secondary-color);
     position: relative;
     display: inline-block;
     white-space: nowrap;
     overflow: hidden;
     animation: typing 3.5s steps(40, end);
-    text-shadow: 0 0 5px var(--secondary-color);
-    padding: 15px;
 }
 
 .hero-content h1::after {
@@ -80,7 +78,7 @@ body {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 0 10px var(--secondary-color);
-    opacity: 70%;
+    opacity: 90%;
 }
 .navbar .logo {
     border-radius: 50px;
@@ -126,6 +124,7 @@ body {
     padding: 0.5rem 0.5rem;
     border-radius: 4px;
     font-size: 1.35rem;
+    text-shadow: 0 0 5px white;
 }
 
 .nav-links a::after {
@@ -173,7 +172,7 @@ body {
 }
 
 .hero-content p {
-    font-size: 1.8rem;
+    font-size: 2.5rem;
     margin-bottom: 2rem;
     color: var(--accent-color);
     text-shadow: 0 0 10px var(--secondary-color);
@@ -231,6 +230,7 @@ body {
     font-size: 3.5rem;
     text-transform: uppercase;
     letter-spacing: 3px;
+    text-shadow: 0 0 10px var(--secondary-color);
 }
 
 /* Mission Section */
