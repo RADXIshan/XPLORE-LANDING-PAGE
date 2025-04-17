@@ -330,6 +330,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Remove message after 5 seconds
         setTimeout(() => {
             messageDiv.remove();
-        }, 5000);
+        }, 4000);
     }
 }); 

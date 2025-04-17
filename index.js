@@ -22,12 +22,11 @@ app.get('/', (req, res) => {
 
 // Handle form submission
 app.post('/submit', async (req, res) => {
-
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         host: "smtp.gmail.com",
         port: 587,
-        secure: false, // true for port 465, false for other ports
+        secure: false,
         auth: {
             user: process.env.EMAIL,
             pass: process.env.APP_PASSWORD,
@@ -39,34 +38,31 @@ app.post('/submit', async (req, res) => {
             name: "Ishan Roy",
             address: "trickster10ishan@gmail.com"
         },
-        to: "ishanroy3118107@gmail.com", // list of receivers
-        subject: "Sent from XPLORE website", // Subject line
-        text: `Name: ${req.body.name}\nEmail: ${req.body.email}\nMessage: ${req.body.message}`, // plain text body
-    }
+        to: "ishanroy3118107@gmail.com",
+        subject: "Sent from XPLORE website",
+        text: `Name: ${req.body.name}\nEmail: ${req.body.email}\nMessage: ${req.body.message}`,
+    };
 
-    const sender ={
+    const sender = {
         from: {
             name: "XPLORE XIM",
-            address: "ishanroy3118107@gmail.com"
+            address: "trickster10ishan@gmail.com"
         },
-        to: req.body.email, // list of receivers
-        subject: "XPLORE feedback", // Subject line
-        text: `Thank you for your feedback. We will get back to you soon.`, // plain text body
-    }
+        to: `${req.body.email}`,
+        subject: "XPLORE feedback",
+        text: `Thank you for your feedback. We will get back to you soon.`,
+    };
 
-    const sendMail = async (transporter, mailOptions) => { 
-        try {
-            const info = await transporter.sendMail(mailOptions);
-            console.log("Message sent: %s", info.messageId);
-        } catch (error) {
-            console.error('Error sending email:', error);
-        }
+    try {
+        await transporter.sendMail(mailOptions);
+        await transporter.sendMail(sender);
+        res.redirect('/?success=true#contact'); // ✅ Only one redirect after both emails
+    } catch (error) {
+        console.error('Error sending email:', error);
+        res.redirect('/?error=send#contact'); // ✅ One error redirect
     }
-
-    sendMail(transporter, mailOptions);
-    sendMail(transporter, sender);
-    res.redirect('index.html#contact');
 });
+
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
