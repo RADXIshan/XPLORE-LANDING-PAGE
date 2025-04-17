@@ -80,6 +80,7 @@ body {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 0 10px var(--secondary-color);
+    opacity: 70%;
 }
 .navbar .logo {
     border-radius: 50px;
@@ -219,7 +220,7 @@ body {
 /* About Section */
 .about {
     padding: 5rem 0;
-    background-color: var(--light-bg);
+    background-color: black;    
     position: relative;
 }
 
@@ -419,10 +420,8 @@ body {
 /* Team Section */
 .team {
     padding: 5rem 0;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
+    background-color:  black;
+} 
 
 .team h2 {
     text-align: center;
@@ -485,13 +484,13 @@ body {
 }
 
 /* Contact Section */
-.contact {
+ .contact {
     padding: 5rem 0;
     background: url(../images/background3.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-}
+} 
 
 .contact h2 {
     text-align: center;
@@ -597,6 +596,7 @@ body {
     padding: 2rem 0;
     text-align: center;
     border-top: 1px solid var(--secondary-color);
+    font-size: 1.2rem;
 }
 
 /* Animation */
@@ -625,6 +625,14 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    animation: header-image-animation linear forwards;
+    animation-timeline: view();
+    animation-range: exit;
+    transform-origin: top;
+}
+@keyframes header-image-animation {
+    25%{opacity: 1;}
+    85%,100%{opacity: 0; scale: 2;}
 }
 
 .hero-content {
@@ -708,16 +716,13 @@ button:hover{
     cursor: none;
     transform: translateY(-3px);
 }
-#background{
-    background-color: var(--primary-color);
-}
 
-#events {
-    background: url(../images/background4.jpg);
+ #events {
+    background:url(../images/matrix.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-}
+} 
 
 .contact-input{
    font-size: 1.5rem;
