@@ -53,8 +53,10 @@ app.post('/submit', async (req, res) => {
     };    
 
     try {
-        await transporter.sendMail(mailOptions);
-        await transporter.sendMail(confirmationMail);
+        await Promise.all([
+            transporter.sendMail(mailOptions),
+            transporter.sendMail(confirmationMail)
+        ]);        
         res.redirect('/?success=true#contact'); // ✅ Only one redirect after both emails
     } catch (error) {
         console.error('Error sending email:', error);
