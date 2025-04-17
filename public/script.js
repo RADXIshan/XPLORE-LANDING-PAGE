@@ -336,10 +336,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //site wide cursor
 const siteWide = document.querySelector('.custom-cursor.site-wide');
-document.addEventListener('mouseover', (e) => {
+document.addEventListener('mouseenter', (e) => {
     siteWide.style.display = 'block';
 });
-document.addEventListener('mouseup', (e) => {
+document.addEventListener('mouseleave', (e) => {
     siteWide.style.display = 'none';
 });
 

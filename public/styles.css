@@ -768,7 +768,7 @@ section {
     height: 5px;
     background-color: var(--secondary-color);
     border-radius: 50%;
-    transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
+    transition: width 0.1s ease-in-out, height 0.1s ease-in-out;
 }
 
 .site-wide.active .pointer{
