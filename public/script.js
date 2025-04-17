@@ -36,27 +36,6 @@ function createBackgroundElements() {
     }
 }
 
-// Scroll Reveal Animation
-const pageSections = document.querySelectorAll('section');
-
-function revealOnScroll() {
-    const triggerBottom = window.innerHeight * 0.8;
-
-    pageSections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-
-        if (sectionTop < triggerBottom) {
-            section.classList.add('reveal');
-        }
-    });
-}
-
-// Initial check for sections in view
-revealOnScroll();
-
-// Add scroll event listener
-window.addEventListener('scroll', revealOnScroll);
-
 // Event Tabs
 const tabButtons = document.querySelectorAll('.tab-btn');
 const eventsContent = document.querySelector('.events-content');
@@ -139,31 +118,6 @@ tabButtons.forEach(button => {
     });
 });
 
-// Mobile Navigation
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navLinks.classList.toggle('active');
-});
-
-// Close mobile menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-        hamburger.classList.remove('active');
-        navLinks.classList.remove('active');
-    }
-});
-
-// Close mobile menu when clicking on a link
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navLinks.classList.remove('active');
-    });
-});
-
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -177,25 +131,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
-
-// Initialize background elements
-createBackgroundElements();
-
-// Responsive adjustments
-function handleResponsive() {
-    const isMobile = window.innerWidth <= 768;
-    const container = document.querySelector('.container');
-    
-    if (isMobile) {
-        container.style.padding = '0 15px';
-    } else {
-        container.style.padding = '0 20px';
-    }
-}
-
-// Handle window resize
-window.addEventListener('resize', handleResponsive);
-handleResponsive();
 
 // Development-related animations
 const missionContent = document.querySelector('.mission-content');
@@ -242,66 +177,12 @@ cards.forEach(card => {
     });
 });
 
-// Scroll Animation with 3D Effect
-const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0) rotateX(0)';
-        }
-    });
-}, observerOptions);
-
-// Observe all sections with 3D effect
-document.querySelectorAll('section').forEach(section => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(50px) rotateX(10deg)';
-    section.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
-    observer.observe(section);
-});
-
 // Dynamic Year in Footer
 const yearSpan = document.querySelector('footer p');
 if (yearSpan) {
     const currentYear = new Date().getFullYear();
     yearSpan.textContent = yearSpan.textContent.replace('2024', currentYear);
 }
-
-// Add glowing effect to navigation links on scroll
-const sections = document.querySelectorAll('section');
-const navItems = document.querySelectorAll('.nav-links a');
-
-window.addEventListener('scroll', () => {
-    let current = '';
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (pageYOffset >= sectionTop - 60) {
-            current = section.getAttribute('id');
-        }
-    });
-    
-    navItems.forEach(item => {
-        item.classList.remove('active');
-        if (item.getAttribute('href').slice(1) === current) {
-            item.classList.add('active');
-        }
-    });
-});
-
-// Add parallax effect to hero section
-const hero = document.querySelector('.hero');
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    hero.style.backgroundPositionY = -(scrolled * 0.5) + 'px';
-});
 
 // Form Submission Handling
 document.addEventListener('DOMContentLoaded', () => {

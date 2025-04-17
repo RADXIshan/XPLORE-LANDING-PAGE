@@ -1,7 +1,3 @@
-/* Reset and Base Styles */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap');
-
 * {
     margin: 0;
     padding: 0;
@@ -9,49 +5,32 @@
 }
 
 :root {
-    --primary-color: #0a0a1a;
-    --secondary-color: #00ffff;
-    --accent-color: #ffff00;
+    --primary-color: black;
+    --secondary-color: rgb(0, 205, 0);
+    --accent-color: rgb(0, 205, 0);
     --text-color: #ffffff;
-    --light-bg: #1a1a2e;
-    --white: #ffffff;
     --card-bg: rgba(10, 10, 26, 0.8);
-    --mission-bg: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 255, 0, 0.1));
-    --code-bg: #1e1e2e;
+    --light-bg: black;
 }
+
 html{
     cursor: none;
 }
 body {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Jersey 15', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    background-color: var(--primary-color);
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
     cursor: none;
 }
 
-/* Interactive Background */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(255, 255, 0, 0.1) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: -1;
-}
 
 /* Terminal-like Typing Effect */
 .hero-content h1 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 4rem;
+    font-family: 'Jersey 15', sans-serif;
+    font-size: 6rem;
     margin-bottom: 1rem;
     color: var(--secondary-color);
     position: relative;
@@ -59,6 +38,8 @@ body::before {
     white-space: nowrap;
     overflow: hidden;
     animation: typing 3.5s steps(40, end);
+    text-shadow: 0 0 5px var(--secondary-color);
+    padding: 15px;
 }
 
 .hero-content h1::after {
@@ -76,45 +57,6 @@ body::before {
 @keyframes blink {
     from, to { opacity: 0 }
     50% { opacity: 1 }
-}
-
-/* Interactive Background Elements */
-.interactive-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-}
-
-.bg-element {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background-color: var(--secondary-color);
-    border-radius: 50%;
-    opacity: 0.3;
-    animation: float 15s infinite linear;
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(0) translateX(0);
-    }
-    25% {
-        transform: translateY(-20px) translateX(20px);
-    }
-    50% {
-        transform: translateY(-40px) translateX(0);
-    }
-    75% {
-        transform: translateY(-20px) translateX(-20px);
-    }
-    100% {
-        transform: translateY(0) translateX(0);
-    }
 }
 
 .container {
@@ -145,7 +87,7 @@ body::before {
 }
 .navbar .logo h1:hover {
     color: transparent;
-    -webkit-text-stroke: 2px var(--secondary-color);
+    -webkit-text-stroke: 1px var(--secondary-color);
 }
 .navbar .container {
     display: flex;
@@ -159,7 +101,7 @@ body::before {
 
 .logo h1 {
     color: var(--secondary-color);
-    font-size: 2rem;
+    font-size: 2.2rem;
     text-shadow: 0 0 10px var(--secondary-color);
     letter-spacing: 2px;
     margin: 0;
@@ -182,6 +124,7 @@ body::before {
     position: relative;
     padding: 0.5rem 0.5rem;
     border-radius: 4px;
+    font-size: 1.35rem;
 }
 
 .nav-links a::after {
@@ -196,7 +139,7 @@ body::before {
 }
 
 .nav-links a:hover {
-    color: var(--accent-color);
+    color: greenyellow;
     background-color: rgba(255, 255, 0, 0.1);
 }
 
@@ -204,25 +147,9 @@ body::before {
     width: 100%;
 }
 
-.hamburger {
-    display: none;
-    cursor: pointer;
-    padding: 0.5rem;
-}
-
-.hamburger span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background-color: var(--text-color);
-    margin: 5px 0;
-    transition: 0.3s;
-}
-
 /* Hero Section */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)) center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -231,6 +158,7 @@ body::before {
     padding-top: 80px;
     position: relative;
     overflow: hidden;
+
 }
 
 .hero::before {
@@ -240,23 +168,14 @@ body::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
-        linear-gradient(45deg, transparent 45%, var(--secondary-color) 49%, transparent 51%),
-        linear-gradient(-45deg, transparent 45%, var(--accent-color) 49%, transparent 51%);
-    background-size: 60px 60px;
     opacity: 0.1;
-    animation: gridMove 20s linear infinite;
-}
-
-@keyframes gridMove {
-    0% { background-position: 0 0; }
-    100% { background-position: 60px 60px; }
 }
 
 .hero-content p {
     font-size: 1.8rem;
     margin-bottom: 2rem;
     color: var(--accent-color);
+    text-shadow: 0 0 10px var(--secondary-color);
 }
 
 .cta-button {
@@ -271,6 +190,7 @@ body::before {
     position: relative;
     overflow: hidden;
     z-index: 1;
+    font-size: 1.35rem;
 }
 
 .cta-button::before {
@@ -307,21 +227,9 @@ body::before {
     text-align: center;
     margin-bottom: 3rem;
     color: var(--secondary-color);
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     text-transform: uppercase;
     letter-spacing: 3px;
-}
-
-/* Scroll Reveal Animation */
-section {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-section.reveal {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 /* Mission Section */
@@ -330,7 +238,6 @@ section.reveal {
     grid-template-columns: 1fr;
     gap: 2rem;
     align-items: center;
-    background: var(--mission-bg);
     padding: 3rem;
     border-radius: 20px;
     border: 1px solid var(--secondary-color);
@@ -357,14 +264,14 @@ section.reveal {
 .mission-text h3 {
     color: var(--secondary-color);
     font-size: 2rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 3.5rem;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
 .mission-text p {
     color: var(--text-color);
-    font-size: 1.2rem;
+    font-size: 1.8rem;
     line-height: 1.8;
     margin-bottom: 2rem;
     transform: none !important;
@@ -373,7 +280,7 @@ section.reveal {
 
 .mission-text ul {
     list-style: none;
-    margin-top: 1.5rem;
+    margin-top: 1.8rem;
     transform: none !important;
     transition: none !important;
 }
@@ -383,7 +290,7 @@ section.reveal {
     color: var(--text-color);
     position: relative;
     padding-left: 2rem;
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     line-height: 1.6;
     transform: none !important;
     transition: none !important;
@@ -394,24 +301,20 @@ section.reveal {
     color: var(--accent-color);
     position: absolute;
     left: 0;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     transform: none !important;
     transition: none !important;
 }
 
 /* Events Section */
-#events {
-    padding: 8rem 0;
-    background-color: var(--primary-color);
-}
-
 #events h2 {
     text-align: center;
     margin-bottom: 4rem;
     color: var(--secondary-color);
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     text-transform: uppercase;
     letter-spacing: 3px;
+    text-shadow: 0 0 10px var(--secondary-color);
 }
 
 .events-content {
@@ -434,24 +337,28 @@ section.reveal {
 .event-card h3 {
     color: var(--accent-color);
     margin-bottom: 0.5rem;
+    font-size: 1.8rem;
 }
 
 .date {
     color: var(--secondary-color);
     font-weight: 500;
     margin-bottom: 1rem;
+    font-size: 1.5rem;
 }
-
+.event-card p{
+    font-size: 1.2rem;
+}
 .register-btn {
     display: inline-block;
     padding: 0.75rem 1.5rem;
-    background: linear-gradient(135deg, #00ffe0, #ffd700);
+    background: linear-gradient(135deg, greenyellow,greenyellow);
     color: #000;
     border: none;
     border-radius: 8px;
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Jersey 15', sans-serif;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.2rem;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
@@ -468,7 +375,7 @@ section.reveal {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #00ffe0, #ffd700);
+    background: linear-gradient(135deg,greenyellow,greenyellow);
     filter: brightness(1.3);
     transition: all 0.4s ease;
     z-index: -1;
@@ -481,7 +388,7 @@ section.reveal {
   .register-btn:hover {
     color: #000;
     transform: scale(1.05);
-    box-shadow: 0 0 15px #00ffe0, 0 0 30px #ffd700;
+    box-shadow: 0 0 15px greenyellow, 0 0 30px greenyellow;
   }
   
 /* Event Tabs */
@@ -500,6 +407,8 @@ section.reveal {
     cursor: pointer;
     transition: all 0.3s ease;
     border-radius: 5px;
+    font-size: 1.2rem;
+    font-family: 'Jersey 15', sans-serif;
 }
 
 .tab-btn.active {
@@ -510,16 +419,19 @@ section.reveal {
 /* Team Section */
 .team {
     padding: 5rem 0;
-    background-color: var(--light-bg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .team h2 {
     text-align: center;
     margin-bottom: 3rem;
     color: var(--secondary-color);
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     text-transform: uppercase;
     letter-spacing: 3px;
+    text-shadow: 0 0 10px var(--secondary-color);
 }
 
 .team-grid {
@@ -527,7 +439,9 @@ section.reveal {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
 }
-
+.team-member h3{
+    font-size: 1.8rem;
+}
 .team-member {
     background-color: var(--card-bg);
     padding: 2rem;
@@ -551,6 +465,7 @@ section.reveal {
 .role {
     color: var(--accent-color);
     margin-bottom: 1rem;
+    font-size: 1.5rem;
 }
 
 .social-links {
@@ -561,27 +476,31 @@ section.reveal {
 
 .social-links a {
     color: var(--secondary-color);
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     transition: all 0.3s ease;
 }
 
 .social-links a:hover {
-    color: var(--accent-color);
+    color: greenyellow;
 }
 
 /* Contact Section */
 .contact {
     padding: 5rem 0;
-    background-color: var(--primary-color);
+    background: url(../images/background3.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .contact h2 {
     text-align: center;
     margin-bottom: 3rem;
     color: var(--secondary-color);
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     text-transform: uppercase;
     letter-spacing: 3px;
+    text-shadow: 0 0 10px var(--secondary-color);
 }
 
 .contact-content {
@@ -596,18 +515,19 @@ section.reveal {
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
     border: 1px solid var(--secondary-color);
+    font-size: 1.4rem;
 }
 
 .info-item {
     display: flex;
     align-items: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
 }
 
 .info-item i {
     margin-right: 1rem;
     color: var(--accent-color);
-    font-size: 1.5rem;
+    font-size: 2.5rem;
 }
 
 .social-media {
@@ -623,7 +543,7 @@ section.reveal {
 }
 
 .social-media a:hover {
-    color: var(--accent-color);
+    color: greenyellow;
     transform: translateY(-3px);
 }
 
@@ -645,7 +565,7 @@ section.reveal {
     border: 1px solid var(--secondary-color);
     border-radius: 5px;
     color: var(--text-color);
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Jersey 15', sans-serif;
 }
 
 .contact-form textarea {
@@ -661,7 +581,8 @@ section.reveal {
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Jersey 15', sans-serif;
+    font-size: 1.2rem;
 }
 
 .submit-btn:hover {
@@ -670,7 +591,7 @@ section.reveal {
 }
 
 /* Footer */
-footer {
+.footer {
     background-color: var(--primary-color);
     color: var(--text-color);
     padding: 2rem 0;
@@ -700,7 +621,10 @@ footer {
 .hero {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 100%);
+    background-image: url(../images/background2.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .hero-content {
@@ -778,9 +702,29 @@ section {
 
 a:hover{
     cursor: none;
+    transform: translateY(-3px);
 }
 button:hover{
     cursor: none;
+    transform: translateY(-3px);
+}
+#background{
+    background-color: var(--primary-color);
 }
 
+#events {
+    background: url(../images/background4.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.contact-input{
+   font-size: 1.5rem;
+   padding: 10px;
+   border-radius: 5px;
+   border: 1px solid var(--secondary-color);
+   background-color: rgba(0, 0, 0, 0.5);
+   color: var(--text-color);
+}
   

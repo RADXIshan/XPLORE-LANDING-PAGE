@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xplore - Coding Club</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -23,11 +26,6 @@
                 <li><a href="#team">Team</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </div>
     </nav>
 
@@ -41,6 +39,7 @@
         </div>
     </section>
 
+    <section id="background">
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
@@ -172,9 +171,9 @@
                     </div>
                 </div>
                 <form action="/submit" method="post" class="contact-form" id="contact-form">
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
-                    <textarea name="message" placeholder="Your Message" required></textarea>
+                    <input class="contact-input" type="text" name="name" placeholder="Your Name" required>
+                    <input class="contact-input" type="email" name="email" placeholder="Your Email" required>
+                    <textarea class="contact-input" name="message" placeholder="Your Message" required></textarea>
                     <button type="submit" class="submit-btn">Send Message</button>
                 </form>
             </div>
@@ -182,11 +181,12 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+    <div class="footer">
         <div class="container">
             <p>&copy; 2025 Xplore Coding Club. All rights reserved.</p>
         </div>
-    </footer>
+    </div>
+    </section>
     <script src="script.js"></script>
 </body>
 </html> 
