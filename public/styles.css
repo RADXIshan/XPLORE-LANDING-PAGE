@@ -19,7 +19,9 @@
     --mission-bg: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 255, 0, 0.1));
     --code-bg: #1e1e2e;
 }
-
+html{
+    cursor: none;
+}
 body {
     font-family: 'Orbitron', sans-serif;
     line-height: 1.6;
@@ -28,6 +30,7 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
+    cursor: none;
 }
 
 /* Interactive Background */
@@ -137,7 +140,6 @@ body::before {
     box-shadow: 0 0 10px var(--secondary-color);
 }
 .navbar .logo {
-    background-color: black;
     border-radius: 50px;
     padding: 0.5em 1rem;
 }
@@ -736,3 +738,49 @@ section {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
 } 
+
+
+.custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+  }
+  
+.site-wide{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid var(--secondary-color);
+}
+
+.site-wide .pointer{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 5px;
+    height: 5px;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
+}
+
+.site-wide.active .pointer{
+    width: 20px;
+    height: 20px;
+}
+
+a:hover{
+    cursor: none;
+}
+button:hover{
+    cursor: none;
+}
+
+  

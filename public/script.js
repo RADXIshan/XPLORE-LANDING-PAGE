@@ -333,3 +333,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 4000);
     }
 }); 
+
+//site wide cursor
+const siteWide = document.querySelector('.custom-cursor.site-wide');
+document.addEventListener('mouseover', (e) => {
+    siteWide.style.display = 'block';
+});
+document.addEventListener('mouseup', (e) => {
+    siteWide.style.display = 'none';
+});
+
+document.addEventListener('mousemove', TrackCursor);
+document.addEventListener('mousedown', () => siteWide.classList.add('active'));
+document.addEventListener('mouseup', () => siteWide.classList.remove('active'));
+
+function TrackCursor(e){
+    const width = siteWide.clientWidth;
+    const height = siteWide.clientHeight;
+    siteWide.style.transform = `translate(${e.clientX - width/2}px, ${e.clientY - height/2}px)`;
+}
