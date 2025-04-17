@@ -42,20 +42,19 @@ app.post('/submit', async (req, res) => {
         subject: "Sent from XPLORE website",
         text: `Name: ${req.body.name}\nEmail: ${req.body.email}\nMessage: ${req.body.message}`,
     };
-
-    const sender = {
+    const confirmationMail = {
         from: {
             name: "XPLORE XIM",
             address: "trickster10ishan@gmail.com"
         },
-        to: `${req.body.email}`,
-        subject: "XPLORE feedback",
-        text: `Thank you for your feedback. We will get back to you soon.`,
-    };
+        to: req.body.email,
+        subject: "XPLORE feedback received",
+        text: `Hi ${req.body.name},\n\nThank you for reaching out to XPLORE. We'll get back to you shortly.\n\n- Team XPLORE`,
+    };    
 
     try {
         await transporter.sendMail(mailOptions);
-        await transporter.sendMail(sender);
+        await transporter.sendMail(confirmationMail);
         res.redirect('/?success=true#contact'); // ✅ Only one redirect after both emails
     } catch (error) {
         console.error('Error sending email:', error);
