@@ -47,7 +47,7 @@ app.post('/submit', async (req, res) => {
     const sender ={
         from: {
             name: "XPLORE XIM",
-            address: "xplore@xim.edu.in"
+            address: "ishanroy3118107@gmail.com"
         },
         to: req.body.email, // list of receivers
         subject: "XPLORE feedback", // Subject line
