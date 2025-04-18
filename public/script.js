@@ -1,23 +1,45 @@
-// Typing Animation
 const welcomeText = "Welcome to Xplore";
 const welcomeElement = document.querySelector('.hero-content h1');
-let charIndex = 0;
-let isTyping = true;
+const titleElement = document.getElementById('hero-title');
 
-function typeWriter() {
+let charIndex = 0;
+let typingTimeout;
+let isTyping = false;
+
+function typeWriter(onComplete) {
     if (charIndex < welcomeText.length) {
         welcomeElement.textContent = welcomeText.substring(0, charIndex + 1);
         charIndex++;
-        setTimeout(typeWriter, 100);
+        typingTimeout = setTimeout(() => typeWriter(onComplete), 100);
     } else {
         isTyping = false;
+        if (typeof onComplete === 'function') {
+            onComplete(); // ✅ Typing done callback
+        }
     }
 }
 
-// Start typing animation when page loads
-window.addEventListener('load', () => {
+function startTyping(onComplete) {
+    if (isTyping) return;
+    isTyping = true;
+    charIndex = 0;
+    clearTimeout(typingTimeout);
     welcomeElement.textContent = '';
-    setTimeout(typeWriter, 1000);
+    typeWriter(onComplete);
+}
+
+// On page load — type, THEN attach hover
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        startTyping(() => {
+            // ✅ Attach hover listener *after* first animation finishes
+            titleElement.addEventListener('mouseover', () => {
+                if (!isTyping) {
+                    startTyping(); // hover-triggered typing
+                }
+            });
+        });
+    }, 2000);
 });
 
 // Interactive Background Elements
@@ -233,3 +255,5 @@ function TrackCursor(e){
     const height = siteWide.clientHeight;
     siteWide.style.transform = `translate(${e.clientX - width/2}px, ${e.clientY - height/2}px)`;
 }
+
+
