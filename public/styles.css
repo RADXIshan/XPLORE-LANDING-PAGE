@@ -644,18 +644,30 @@ section {
     text-align: center;
     font-weight: bold;
     animation: fadeIn 0.3s ease-in-out;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .form-message.success {
     background-color: #d4edda;
     color: #155724;
     border: 1px solid #c3e6cb;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .form-message.error {
     background-color: #f8d7da;
     color: #721c24;
     border: 1px solid #f5c6cb;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @keyframes fadeIn {
