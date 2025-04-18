@@ -625,14 +625,6 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    animation: header-image-animation linear forwards;
-    animation-timeline: view();
-    animation-range: exit;
-    transform-origin: top;
-}
-@keyframes header-image-animation {
-    25%{opacity: 1;}
-    85%,100%{opacity: 0; scale: 2;}
 }
 
 .hero-content {
