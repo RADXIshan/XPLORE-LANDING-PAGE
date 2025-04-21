@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: black;
 }
 
 :root {
@@ -486,10 +487,6 @@ body {
 /* Contact Section */
  .contact {
     padding: 5rem 0;
-    background: url(../images/background3.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 } 
 
 .contact h2 {
@@ -621,10 +618,6 @@ body {
 .hero {
     position: relative;
     overflow: hidden;
-    background-image: url(../images/background2.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 }
 
 .hero-content {
@@ -720,13 +713,6 @@ button:hover{
     cursor: none;
     transform: translateY(-3px);
 }
-
- #events {
-    background:url(../images/matrix.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-} 
 
 .contact-input{
    font-size: 1.5rem;

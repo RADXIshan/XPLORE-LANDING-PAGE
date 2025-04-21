@@ -66,34 +66,47 @@ const eventsContent = document.querySelector('.events-content');
 const events = [
     {
         id: 1,
-        title: "Hackathon 2024",
-        date: "2024-06-15",
-        description: "Join us for our annual hackathon event!",
+        title: "Git and Github Workshop",
+        date: "2025-05-03",
+        description: "Learn the basics of Git and GitHub with our workshop!",
         type: "upcoming"
     },
     {
         id: 2,
-        title: "Web Development Workshop",
-        date: "2024-05-20",
-        description: "Learn the latest in web development.",
+        title: "ESG Hackathon",
+        date: "2024-07-25",
+        description: "An event uniting SCSE and SOS students to tackle real-world ESG challenges with tech.",
         type: "upcoming"
     },
     {
         id: 3,
-        title: "AI Conference 2024",
-        date: "2024-03-10",
-        description: "Annual AI and Machine Learning conference.",
-        type: "past"
+        title: "Code Relay",
+        date: "2024-09-13",
+        description: "A coding competition where participants work together to solve problems.",
+        type: "upcoming"
     },
     {
         id: 4,
-        title: "Coding Bootcamp",
-        date: "2024-02-15",
-        description: "Intensive coding bootcamp for beginners.",
+        title: "Blind Coding",
+        date: "2024-09-13",
+        description: "A coding competition where participants code without seeing the code.",
+        type: "past"
+    },
+    {
+        id: 5,
+        title: "AI Prompting",
+        date: "2024-09-13",
+        description: "A competition on how to use AI to code.",
+        type: "past"
+    },
+    {
+        id: 6,
+        title: "AI Prompting",
+        date: "2024-09-13",
+        description: "A competition on how to use AI to code.",
         type: "past"
     }
 ];
-
 // Function to render events based on type
 function renderEvents(type) {
     eventsContent.innerHTML = ''; // Clear existing events
