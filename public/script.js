@@ -69,7 +69,7 @@ const events = [
         title: "Git and Github Workshop",
         date: "2025-05-03",
         description: "Learn the basics of Git and GitHub with our workshop!",
-        type: "upcoming"
+        type: "past"
     },
     {
         id: 2,
@@ -81,7 +81,7 @@ const events = [
     {
         id: 3,
         title: "Code Relay",
-        date: "2024-09-13",
+        date: "2025-09-13",
         description: "A coding competition where participants work together to solve problems.",
         type: "upcoming"
     },
@@ -99,13 +99,6 @@ const events = [
         description: "A competition on how to use AI to code.",
         type: "past"
     },
-    {
-        id: 6,
-        title: "AI Prompting",
-        date: "2024-09-13",
-        description: "A competition on how to use AI to code.",
-        type: "past"
-    }
 ];
 // Function to render events based on type
 function renderEvents(type) {

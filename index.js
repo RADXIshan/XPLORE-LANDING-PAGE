@@ -57,10 +57,10 @@ app.post('/submit', async (req, res) => {
             transporter.sendMail(mailOptions),
             transporter.sendMail(confirmationMail)
         ]);        
-        res.redirect('/?success=true#contact'); // ✅ Only one redirect after both emails
+        res.redirect('/?success=true#contact'); 
     } catch (error) {
         console.error('Error sending email:', error);
-        res.redirect('/?error=send#contact'); // ✅ One error redirect
+        res.redirect('/?error=send#contact');
     }
 });
 
