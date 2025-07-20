@@ -262,7 +262,3 @@ function TrackCursor(e){
     siteWide.style.transform = `translate(${e.clientX - width/2}px, ${e.clientY - height/2}px)`;
 }
 
-document.querySelector(".menu-toggle").addEventListener("click", () => {
-    document.querySelector(".nav-links").classList.toggle("open");
-});
-
