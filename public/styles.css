@@ -5,6 +5,136 @@
     background-color: black;
 }
 
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 1200px) {
+    .container {
+        max-width: 90%;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 4.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 2rem;
+    }
+    
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        padding: 0 1rem;
+    }
+    
+    .nav-links {
+        gap: 0.5rem;
+    }
+    
+    .nav-links a {
+        font-size: 1.2rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.5rem;
+    }
+    
+    .mission-content {
+        padding: 1.5rem;
+    }
+    
+    .mission-text h3 {
+        font-size: 1.8rem;
+    }
+    
+    .mission-text p {
+        font-size: 1.4rem;
+    }
+    
+    .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .navbar {
+        top: 1rem;
+        width: 90%;
+    }
+    
+    .navbar .logo {
+        height: 80px;
+        width: 80px;
+    }
+    
+    .nav-links a {
+        font-size: 1rem;
+        padding: 0 0.2rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+    
+    .cta-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1.1rem;
+    }
+    
+    .about h2, .team h2, .contact h2, #events h2 {
+        font-size: 2.5rem;
+    }
+    
+    .mission-text p {
+        font-size: 1.2rem;
+    }
+    
+    .mission-text li {
+        font-size: 1.1rem;
+    }
+    
+    .event-card h3 {
+        font-size: 1.5rem;
+    }
+    
+    .date {
+        font-size: 1.2rem;
+    }
+    
+    .event-card p {
+        font-size: 1rem;
+    }
+    
+    .register-btn {
+        font-size: 1rem;
+    }
+    
+    .team-member img {
+        width: 150px;
+        height: 180px;
+    }
+    
+    .contact-info {
+        font-size: 1.1rem;
+    }
+    
+    .info-item i {
+        font-size: 1.8rem;
+    }
+}
+
 :root {
     --primary-color: black;
     --secondary-color: rgb(0, 205, 0);
@@ -31,7 +161,7 @@ body {
 /* Terminal-like Typing Effect */
 .hero-content h1 {
     font-family: 'Jersey 15', sans-serif;
-    font-size: 6.5rem;
+    font-size: 5.5rem;
     margin-bottom: 0.1rem;
     color: var(--secondary-color);
     position: relative;
@@ -39,6 +169,24 @@ body {
     white-space: nowrap;
     overflow: hidden;
     animation: typing 3.5s steps(40, end);
+}
+
+@media screen and (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 4.5rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
 }
 
 .hero-content h1::after {
@@ -64,6 +212,7 @@ body {
     padding: 0 20px;
 }
 
+
 /* Navigation */
 .navbar {
     position: fixed;
@@ -72,18 +221,17 @@ body {
     transform: translateX(-50%);
     background: black;
     backdrop-filter: blur(10px);
-    padding: 0rem 1.75rem;
     border-radius: 70px;
     z-index: 1000;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     box-shadow: 0 0 10px var(--secondary-color);
+    width: 55%;
 }
 .navbar .logo{
     border-radius: 50%;
-    height: 120px;
-    width: 120px;
+    width: 9vw;
 }
 .navbar .logo img {
     position: relative;
@@ -97,7 +245,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 800px;
+    max-width: 80%;
     margin: 0;
     padding: 0 1.3rem;
     height: 100%;
@@ -105,9 +253,9 @@ body {
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 1rem;
-    margin: 0;
-    padding: 0;
+    gap: 0.5rem;
+    margin: 1vw;
+    padding: 1vw;
 }
 
 .nav-links a {
@@ -117,19 +265,8 @@ body {
     transition: all 0.3s ease;
     position: relative;
     padding: 0rem 0.3rem;
-    font-size: 1.55rem;
+    font-size: 2vw;
     text-shadow: 0 0 5px white;
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--accent-color);
-    transition: width 0.3s ease;
 }
 
 .nav-links a:hover {
@@ -141,6 +278,75 @@ body {
     width: 100%;
 }
 
+@media screen and (max-width: 992px) {
+    .navbar{
+        width: 70%;
+        height: 12%;
+    }
+    .navbar .logo{
+        height: 12vw;
+        width: 12vw;
+    }
+    .nav-links a{
+        font-size: 2.8vw;
+    }
+    .nav-links{
+        padding: 1rem;
+        gap: 0.8rem;
+    }
+    .navbar .container{
+        border-radius: 50%;
+    }
+}
+@media screen and (max-width: 768px) {
+    .navbar{
+        width: 75%;
+    }
+    .navbar .logo{
+        height: 15vw;
+        width: 18vw;
+    }
+
+    .nav-links a{
+        font-size: 2.9vw;
+    }
+}
+@media screen and (max-width: 576px) {
+    .navbar{
+        width: 85%;
+    }
+    .navbar .logo{
+        
+        width: 40%;
+    }
+    .nav-links{
+        border-radius: 60%;
+    }
+    .nav-links a{
+        font-size: 3.1vw;
+    }
+    .navbar .container{
+        border-radius: 50%;
+    }
+}
+@media screen and (max-width: 400px) {
+    .navbar{
+        width: 90%;
+    }
+    .navbar .logo{
+        height: 75%;
+        width: 40%;
+    }
+    .nav-links{
+        border-radius: 70%;
+    }
+    .nav-links a{
+        font-size: 3.1vw;
+    }
+    .navbar .container{
+        border-radius: 50%;
+    }
+}
 /* Hero Section */
 .hero {
     height: 100vh;
@@ -152,7 +358,29 @@ body {
     padding-top: 80px;
     position: relative;
     overflow: hidden;
+}
 
+@media screen and (max-width: 992px) {
+    .hero {
+        height: 90vh;
+        padding-top: 70px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .hero {
+        padding-top: 50px;
+        height: 80vh;
+        min-height: 450px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .hero {
+        padding-top: 30px;
+        height: 70vh;
+        min-height: 400px;
+    }
 }
 
 .hero::before {
@@ -166,10 +394,31 @@ body {
 }
 
 .hero-content p {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     margin-bottom: 2rem;
     color: var(--accent-color);
     text-shadow: 0 0 10px var(--secondary-color);
+}
+
+@media screen and (max-width: 992px) {
+    .hero-content p {
+        font-size: 1.8rem;
+        margin-bottom: 1.8rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .hero-content p {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 1.2rem;
+    }
 }
 
 .cta-button {
@@ -225,6 +474,39 @@ body {
     text-transform: uppercase;
     letter-spacing: 3px;
     text-shadow: 0 0 10px var(--secondary-color);
+}
+
+@media screen and (max-width: 992px) {
+    .about {
+        padding: 4rem 0;
+    }
+    
+    .about h2 {
+        font-size: 3rem;
+        margin-bottom: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .about {
+        padding: 3.5rem 0;
+    }
+    
+    .about h2 {
+        font-size: 2.8rem;
+        margin-bottom: 2rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .about {
+        padding: 3rem 0;
+    }
+    
+    .about h2 {
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
+    }
 }
 
 /* Mission Section */
@@ -301,6 +583,90 @@ body {
     transition: none !important;
 }
 
+@media screen and (max-width: 992px) {
+    .mission-content {
+        padding: 2rem;
+    }
+    
+    .mission-text {
+        padding: 1.5rem;
+    }
+    
+    .mission-text h3 {
+        font-size: 1.8rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    .mission-text p {
+        font-size: 1.6rem;
+    }
+    
+    .mission-text li {
+        font-size: 1.3rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .mission-content {
+        padding: 1.5rem;
+    }
+    
+    .mission-text {
+        padding: 1.2rem;
+    }
+    
+    .mission-text h3 {
+        font-size: 1.6rem;
+        margin-bottom: 2rem;
+    }
+    
+    .mission-text p {
+        font-size: 1.4rem;
+        line-height: 1.6;
+    }
+    
+    .mission-text li {
+        font-size: 1.2rem;
+        padding-left: 1.5rem;
+    }
+    
+    .mission-text li::before {
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .mission-content {
+        padding: 1rem;
+    }
+    
+    .mission-text {
+        padding: 1rem;
+    }
+    
+    .mission-text h3 {
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .mission-text p {
+        font-size: 1.2rem;
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
+    }
+    
+    .mission-text li {
+        font-size: 1.1rem;
+        line-height: 1.4;
+        padding-left: 1.2rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .mission-text li::before {
+        font-size: 1.1rem;
+    }
+}
+
 /* Events Section */
 #events h2 {
     text-align: center;
@@ -317,6 +683,32 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     padding: 2rem 0;
+}
+
+@media screen and (max-width: 768px) {
+    #events h2 {
+        font-size: 2.8rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    .events-content {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    
+    .events-tabs {
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    #events h2 {
+        font-size: 2.2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .events-content {
+        grid-template-columns: 1fr;
+    }
 }
 
 .event-card {
@@ -432,6 +824,50 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
 }
+
+@media screen and (max-width: 992px) {
+    .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .team {
+        padding: 4rem 0;
+    }
+    
+    .team h2 {
+        font-size: 2.8rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .team-member img {
+        width: 180px;
+        height: 220px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .team {
+        padding: 3rem 0;
+    }
+    
+    .team h2 {
+        font-size: 2.2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .team-grid {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
 .team-member h3{
     font-size: 1.8rem;
 }
@@ -496,6 +932,60 @@ body {
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 2rem;
+}
+
+@media screen and (max-width: 992px) {
+    .contact-content {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .contact {
+        padding: 4rem 0;
+    }
+    
+    .contact h2 {
+        font-size: 2.8rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    .contact-info {
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .contact {
+        padding: 3rem 0;
+    }
+    
+    .contact h2 {
+        font-size: 2.2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .contact-form input,
+    .contact-form textarea,
+    .contact-input {
+        font-size: 1.2rem;
+        padding: 0.8rem;
+    }
+    
+    .submit-btn {
+        font-size: 1.1rem;
+        padding: 0.8rem;
+    }
+    
+    .info-item {
+        margin-bottom: 1rem;
+    }
+    
+    .info-item i {
+        font-size: 2rem;
+    }
 }
 
 .contact-info {
@@ -587,6 +1077,20 @@ body {
     text-align: center;
     border-top: 1px solid var(--secondary-color);
     font-size: 1.2rem;
+}
+
+@media screen and (max-width: 768px) {
+    .footer {
+        padding: 1.5rem 0;
+        font-size: 1.1rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .footer {
+        padding: 1rem 0;
+        font-size: 1rem;
+    }
 }
 
 /* Animation */
