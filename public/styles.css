@@ -2,7 +2,27 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: black;
+}
+
+.hero-content, .hero-content h1, .hero-content h1::after, .hero-content * {
+    background-color: transparent;
+}
+
+.video-background-full {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1000;
+    overflow: hidden;
+}
+
+.video-background-full video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.45;
 }
 
 /* Media Queries for Responsive Design */
@@ -140,7 +160,7 @@
     --secondary-color: rgb(0, 205, 0);
     --accent-color: rgb(0, 205, 0);
     --text-color: #ffffff;
-    --card-bg: rgba(10, 10, 26, 0.8);
+    --card-bg: rgba(0, 0, 0, 0.9);
     --light-bg: black;
 }
 
@@ -155,6 +175,7 @@ body {
     overflow-x: hidden;
     position: relative;
     cursor: none;
+    background-color: rgba(0, 0, 0, 0.85);
 }
 
 
@@ -169,6 +190,7 @@ body {
     white-space: nowrap;
     overflow: hidden;
     animation: typing 3.5s steps(40, end);
+    background: transparent;
 }
 
 @media screen and (max-width: 992px) {
@@ -212,14 +234,18 @@ body {
     padding: 0 20px;
 }
 
+.hero .container {
+    background-color: transparent;
+}
+
 
 /* Navigation */
 .navbar {
     position: fixed;
-    top: 2rem;
+    top: 1.5rem;
     left: 50%;
     transform: translateX(-50%);
-    background: black;
+    background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
     border-radius: 70px;
     z-index: 1000;
@@ -248,7 +274,6 @@ body {
     max-width: 80%;
     margin: 0;
     padding: 0 1.3rem;
-    height: 100%;
 }
 .nav-links {
     display: flex;
@@ -267,18 +292,20 @@ body {
     position: relative;
     padding: 0rem 0.3rem;
     font-size: 2vw;
-    text-shadow: 0 0 5px white;
 }
 
 .nav-links a:hover {
     color: greenyellow;
-    background-color: rgba(255, 255, 0, 0.1);
 }
 
 .nav-links a:hover::after {
     width: 100%;
 }
-
+@media  screen and (max-width: 1024px ) and (min-width: 268px) {
+     .custom-cursor{
+        display: none;
+    }
+}
 @media screen and (max-width: 992px) {
     .navbar{
         width: 70%;
@@ -356,9 +383,27 @@ body {
     justify-content: center;
     text-align: center;
     color: var(--text-color);
-    padding-top: 80px;
+    padding-top: 70px;
     position: relative;
     overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3;
 }
 
 @media screen and (max-width: 992px) {
@@ -398,7 +443,7 @@ body {
     font-size: 2.2rem;
     margin-bottom: 2rem;
     color: var(--accent-color);
-    text-shadow: 0 0 10px var(--secondary-color);
+    background-color: transparent;
 }
 
 @media screen and (max-width: 992px) {
@@ -425,11 +470,10 @@ body {
 .cta-button {
     display: inline-block;
     padding: 1rem 2rem;
-    background-color: transparent;
-    color: var(--secondary-color);
+    background-color: var(--secondary-color);
+    color: black;
     text-decoration: none;
-    border: 2px solid var(--secondary-color);
-    border-radius: 5px;
+    border-radius: 50px;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -444,7 +488,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--secondary-color);
+    background: linear-gradient(135deg, greenyellow, greenyellow);
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.5s ease;
@@ -452,7 +496,9 @@ body {
 }
 
 .cta-button:hover {
-    color: var(--primary-color);
+   color: #000;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px greenyellow, 0 0 30px greenyellow;
 }
 
 .cta-button:hover::before {
@@ -463,7 +509,7 @@ body {
 /* About Section */
 .about {
     padding: 5rem 0;
-    background-color: black;    
+    background-color: transparent;    
     position: relative;
 }
 
@@ -520,6 +566,7 @@ body {
     border-radius: 20px;
     border: 1px solid var(--secondary-color);
     box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .mission-content:hover {
@@ -676,7 +723,6 @@ body {
     font-size: 3.5rem;
     text-transform: uppercase;
     letter-spacing: 3px;
-    text-shadow: 0 0 10px var(--secondary-color);
 }
 
 .events-content {
@@ -718,6 +764,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
     border: 1px solid var(--secondary-color);
+    background-color: rgba(0, 0, 0, 0.7);
 }
 .event-card:hover {
     transform: none !important;
@@ -740,7 +787,7 @@ body {
 .register-btn {
     display: inline-block;
     padding: 0.75rem 1.5rem;
-    background: linear-gradient(135deg, greenyellow,greenyellow);
+    background: var(--secondary-color);
     color: #000;
     border: none;
     border-radius: 8px;
@@ -797,6 +844,7 @@ body {
     border-radius: 5px;
     font-size: 1.2rem;
     font-family: 'Jersey 15', sans-serif;
+    background-color: rgba(0, 0, 0, 0.65);
 }
 
 .tab-btn.active {
@@ -807,7 +855,7 @@ body {
 /* Team Section */
 .team {
     padding: 5rem 0;
-    background-color:  black;
+    background-color: transparent;
 } 
 
 .team h2 {
@@ -879,6 +927,7 @@ body {
     text-align: center;
     box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
     border: 1px solid var(--secondary-color);
+    background-color: rgba(0, 0, 0, 0.7);
 }
 .team-member:hover {
     transform: none !important;
@@ -917,6 +966,7 @@ body {
 /* Contact Section */
  .contact {
     padding: 5rem 0;
+    background-color: transparent;
 } 
 
 .contact h2 {
@@ -996,6 +1046,7 @@ body {
     box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
     border: 1px solid var(--secondary-color);
     font-size: 1.4rem;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .info-item {
@@ -1036,21 +1087,24 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
     border: 1px solid var(--secondary-color);
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .contact-form input,
 .contact-form textarea {
     padding: 1rem;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
     border: 1px solid var(--secondary-color);
     border-radius: 5px;
     color: var(--text-color);
     font-family: 'Jersey 15', sans-serif;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .contact-form textarea {
     height: 150px;
     resize: vertical;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .submit-btn {
@@ -1072,7 +1126,7 @@ body {
 
 /* Footer */
 .footer {
-    background-color: var(--primary-color);
+    background-color: rgba(0, 0, 0, 0.7);
     color: var(--text-color);
     padding: 2rem 0;
     text-align: center;
@@ -1121,6 +1175,7 @@ body {
 .hero-content {
     position: relative;
     z-index: 2;
+    background-color: transparent;
 }
 
 section {
