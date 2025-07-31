@@ -144,6 +144,7 @@
     .team-member img {
         width: 150px;
         height: 180px;
+
     }
     
     .contact-info {
@@ -937,6 +938,7 @@ body {
     height: 240px;
     border-radius: 10%;
     margin-bottom: 1rem;
+    object-fit: cover;
     border: 3px solid var(--secondary-color);
     box-shadow: 0 0 20px var(--secondary-color);
 }

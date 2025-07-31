@@ -74,7 +74,7 @@ const events = [
     {
         id: 2,
         title: "ESG Hackathon",
-        date: "2024-07-25",
+        date: "2025-07-25",
         description: "An event uniting SCSE and SOS students to tackle real-world ESG challenges with tech.",
         type: "upcoming"
     },
